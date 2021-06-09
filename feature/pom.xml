@@ -6,7 +6,7 @@
     <groupId>com.danklco</groupId>
     <artifactId>com.danklco.sample.infra</artifactId>
     <name>Sample Infra - Feature Model</name>
-    <version>2021.06.09-1944</version>
+    <version>2021.06.09-1948</version>
 
     <properties>
         <!-- Project Settings -->
