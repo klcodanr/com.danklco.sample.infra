@@ -8,11 +8,11 @@ on:
         description: 'The project to update'
       VERSION:
         description: 'The new version'
+env:
+  GH_OWNER: klcodanr
+  GROUP_ID: com.danklco.sample
+  ARTIFACT_ID: ${GROUP_ID}.infra
 jobs:
-  env:
-    GH_OWNER: klcodanr
-    GROUP_ID: com.danklco.sample
-    ARTIFACT_ID: ${GROUP_ID}.infra
   versions:
     name: Update Versions
     runs-on: ubuntu-latest

@@ -2,11 +2,11 @@ name: Verify
 on:
   pull_request:
     branches: [ main ]
+env:
+  GH_OWNER: klcodanr
+  GROUP_ID: com.danklco.sample
+  ARTIFACT_ID: ${GROUP_ID}.infra
 jobs:
-  env:
-    GH_OWNER: klcodanr
-    GROUP_ID: com.danklco.sample
-    ARTIFACT_ID: ${GROUP_ID}.infra
   feature:
     runs-on: ubuntu-latest
     steps:
