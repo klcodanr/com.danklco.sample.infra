@@ -186,5 +186,5 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         script: |
           sudo -- sh -c "echo ${{ secrets.GH_PAT }} >> docker login -u ${GH_OWNER} --password-stdin ghcr.io"
-          sudo /etc/init.d/dockhostctl update
-          sudo /etc/init.d/dockhostctl status
+          sudo /etc/init.d/docker-compose-ctl update
+          sudo /etc/init.d/docker-compose-ctl status
