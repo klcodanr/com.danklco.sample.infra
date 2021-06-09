@@ -115,7 +115,7 @@
                                 <groupId>${GROUP_ID}</groupId>
                                 <artifactId>${GROUP_ID}.app</artifactId>
                                 <version>${APP_VERSION}</version>
-                                <classifier>app</classifier>
+                                <classifier>site</classifier>
                                 <type>slingosgifeature</type>
                             </includeArtifact>
                         </aggregate>
