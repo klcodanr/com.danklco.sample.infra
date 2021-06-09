@@ -37,9 +37,6 @@ services:
       - type: bind
         source: ./work/logs/web
         target: /var/log/apache2
-      - type: bind
-        source: ./work/data/kids
-        target: /var/www/vhosts/kids
     secrets:
       - web-private
       - web-chain
