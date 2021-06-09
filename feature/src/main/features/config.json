@@ -1,0 +1,14 @@
+{
+  "bundles": [],
+  "configurations": {
+    "org.apache.sling.security.impl.ReferrerFilter": {
+      "allow.hosts": [
+        "sample.danklco.com",
+        "dev-sample.danklco.com"
+      ],
+      "filter.methods": ["POST", "PUT", "DELETE", "COPY", "MOVE"],
+      "exclude.agents.regexp": [],
+      "allow.empty": false
+    }
+  }
+}

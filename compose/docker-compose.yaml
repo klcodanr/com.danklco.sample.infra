@@ -1,0 +1,57 @@
+version: '3.4'
+services:
+  cms:
+    image: ${IMAGE_NAME_BASE}.cms:${TAG}
+    restart: always
+    stop_grace_period: 5m
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 8092
+        hard: 20000
+    ports:
+      - "8080:8080"
+    volumes:
+      - type: bind
+        source: ./work/cache/cms
+        target: /opt/slingcms/launcher/cache
+      - type: bind
+        source: ./work/logs/cms
+        target: /opt/slingcms/launcher/logs
+      - type: bind
+        source: ./work/data/cms
+        target: /opt/slingcms/launcher/composite/repository-global
+    secrets:
+      - cms-passwd
+      - cms-creds
+  web:
+    image: ${IMAGE_NAME_BASE}.web:${TAG}
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - type: bind
+        source: ./work/cache/web
+        target: /var/cache/apache2
+      - type: bind
+        source: ./work/logs/web
+        target: /var/log/apache2
+      - type: bind
+        source: ./work/data/kids
+        target: /var/www/vhosts/kids
+    secrets:
+      - web-private
+      - web-chain
+      - web-cert
+secrets:
+  cms-passwd:
+    file: ./work/secrets/cms-passwd
+  cms-creds:
+    file: ./work/secrets/cms-creds
+  web-private:
+    file: ./work/secrets/web-private
+  web-chain:
+    file: ./work/secrets/web-chain
+  web-cert:
+    file: ./work/secrets/web-cert
