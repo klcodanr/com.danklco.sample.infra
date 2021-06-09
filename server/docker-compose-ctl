@@ -1,0 +1,46 @@
+#!/bin/bash
+# chkconfig: 2345 20 80
+# description: Manages the docker containers
+
+# Configuration Values
+PROJECT_NAME=danklco-com-sample 
+ROOT_DIR=/opt/com.danklco.sample.infra
+COMPOSE_FILE=$ROOT_DIR/compose/docker-compose.yaml
+ENV_FILE=$ROOT_DIR/compose/.env
+
+# You shouldn't need to customize below here
+
+start() {
+    docker-compose -f $COMPOSE_FILE --env-file $ENV_FILE -p $PROJECT_NAME up -d
+}
+
+stop() {
+    docker-compose -f $COMPOSE_FILE --env-file $ENV_FILE -p $PROJECT_NAME stop
+}
+
+case "$1" in
+   start)
+      start
+      ;;
+   stop)
+      stop
+      ;;
+   restart)
+      stop
+      start
+      ;;
+   status)
+      docker-compose -f $COMPOSE_FILE --env-file $ENV_FILE -p $PROJECT_NAME  ps
+      ;;
+   update)
+      cd $ROOT_DIR
+      git pull
+      docker-compose -f $COMPOSE_FILE --env-file $ENV_FILE pull
+      docker-compose -f $COMPOSE_FILE --env-file $ENV_FILE -p $PROJECT_NAME up -d --remove-orphans
+      docker image prune -f
+      ;;
+   *)
+      echo "Usage: $0 {start|stop|status|restart|update}"
+esac
+
+exit 0
