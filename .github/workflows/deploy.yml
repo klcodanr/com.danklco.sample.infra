@@ -11,7 +11,7 @@ on:
 env:
   GH_OWNER: klcodanr
   GROUP_ID: com.danklco.sample
-  ARTIFACT_ID: ${GROUP_ID}.infra
+  ARTIFACT_ID: com.danklco.sample.infra
 jobs:
   versions:
     name: Update Versions
