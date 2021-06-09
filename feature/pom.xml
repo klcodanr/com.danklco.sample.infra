@@ -113,7 +113,7 @@
                             <!-- Add any additional custom artifacts here -->
                             <includeArtifact>
                                 <groupId>${GROUP_ID}</groupId>
-                                <artifactId>${GROUP_ID}.app</artifactId>
+                                <artifactId>app</artifactId>
                                 <version>${APP_VERSION}</version>
                                 <classifier>site</classifier>
                                 <type>slingosgifeature</type>
